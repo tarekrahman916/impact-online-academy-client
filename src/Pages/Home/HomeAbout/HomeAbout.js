@@ -1,12 +1,17 @@
 import React from "react";
 import students from "../../../assets/students.png";
+import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 
 const HomeAbout = () => {
   return (
     <div className="lg:mx-8 mx-auto mb-6 mt-28 bg-white shadow-lg rounded-md  ">
       <div className="grid lg:grid-cols-2 gap-2">
-        <div>
-          <img src={students} alt="" className="rounded-md mt-[-120px] " />
+        <div className="hidden lg:block">
+          <img
+            src={students}
+            alt=""
+            className="rounded-md mt-[-120px] h-full w-full"
+          />
         </div>
         <div className="my-6 px-6">
           <h2 className="text-6xl font-bold">About us</h2>
@@ -22,8 +27,9 @@ const HomeAbout = () => {
             believe , we are a family. Hopefully, we together to become skillful
             manpower.
           </p>
-          <button className="btn btn-primary px-5 text-white">
+          <button className="btn btn-primary px-5 text-white flex gap-1">
             Learn More
+            <ArrowLongRightIcon className="h-6 w-6 text-white " />
           </button>
         </div>
       </div>

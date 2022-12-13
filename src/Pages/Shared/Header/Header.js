@@ -11,7 +11,7 @@ const Header = () => {
         </Link>
       </li>
       <li>
-        <Link className="font-bold" to="/">
+        <Link className="font-bold" to="/courses">
           Courses
         </Link>
       </li>
@@ -21,14 +21,14 @@ const Header = () => {
         </Link>
       </li>
       <li>
-        <Link className="font-bold" to="/">
+        <Link className="font-bold" to="/contact">
           Contact Us
         </Link>
       </li>
     </>
   );
   return (
-    <div className="navbar my-4  bg-base-100">
+    <div className="navbar my-4 ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

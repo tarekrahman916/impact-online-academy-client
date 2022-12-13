@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BannerItem = ({ slide }) => {
   const { image, id, prev, next } = slide;
@@ -19,9 +20,9 @@ const BannerItem = ({ slide }) => {
           future of yours.
         </p>
         <div className="mb-6">
-          <button className="btn btn-outline  text-white">
+          <Link to="/courses" className="btn btn-outline  text-white">
             See All Courses
-          </button>
+          </Link>
         </div>
       </div>
 
