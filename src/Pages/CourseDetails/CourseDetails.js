@@ -1,10 +1,10 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const CourseDetails = () => {
   const course = useLoaderData();
-  const { image, name, instructor, desc, overView, features } = course;
-  console.log(course);
+  const { _id, image, name, instructor, desc, overView, features, video } =
+    course;
 
   return (
     <div className="my-6">
@@ -21,7 +21,9 @@ const CourseDetails = () => {
               Instructor: <span className="text-red-700">{instructor}</span>{" "}
             </h4>
             <p className="py-6 text-justify">{desc}</p>
-            <button className="btn btn-primary">Apply Now</button>
+            <Link to={`/courses_apply/${_id}`} className="btn btn-primary">
+              Apply Now
+            </Link>
           </div>
         </div>
       </div>
@@ -42,11 +44,18 @@ const CourseDetails = () => {
               ))}
             </ul>
           </div>
-          <div>
-            <h2 className="text-3xl font-bold mt-8 mb-3">
-              Who Can Attend this Course?
-            </h2>
-          </div>
+        </div>
+        <div className="flex justify-center">
+          <iframe
+            className="rounded-md"
+            width="560"
+            height="315"
+            src={video}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
     </div>

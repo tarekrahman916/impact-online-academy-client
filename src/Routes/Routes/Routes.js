@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import CoursesApply from "../../components/CoursesApply/CoursesApply";
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import Main from "../../Layouts/Main";
 import Contact from "../../Pages/Contact/Contact";
@@ -7,6 +8,7 @@ import Courses from "../../Pages/Courses/Courses";
 import AddCourse from "../../Pages/Dashboard/AddCourse/AddCourse";
 import AllCourses from "../../Pages/Dashboard/AllCourses/AllCourses";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import MyCourses from "../../Pages/Dashboard/MyCourses/MyCourses";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
@@ -43,6 +45,16 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+      {
+        path: "/courses_apply/:id",
+        element: (
+          <PrivateRoute>
+            <CoursesApply />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/courses/${params.id}`),
+      },
     ],
   },
   {
@@ -70,6 +82,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddCourse />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/my-courses",
+        element: (
+          <PrivateRoute>
+            <MyCourses />
           </PrivateRoute>
         ),
       },

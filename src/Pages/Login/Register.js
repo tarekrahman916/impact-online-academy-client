@@ -11,7 +11,7 @@ const Register = () => {
     handleSubmit,
   } = useForm();
 
-  const { createUser } = useContext(authContext);
+  const { createUser, updateUser } = useContext(authContext);
   const [signUpError, setSignUpError] = useState("");
   const navigate = useNavigate();
 
@@ -19,19 +19,46 @@ const Register = () => {
     const name = data?.name;
     const email = data?.email;
     const password = data?.password;
+    const role = "user";
     setSignUpError("");
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        e.target.reset();
-        navigate("/");
-        toast.success("User created successfully");
+
+        const userInfo = {
+          displayName: name,
+        };
+        updateUser(userInfo)
+          .then(() => {
+            saveUserDb(name, email, role);
+
+            toast.success("User created successfully");
+            e.target.reset();
+            navigate("/");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
         setSignUpError(err.message);
         toast.error(signUpError);
+      });
+  };
+
+  const saveUserDb = (name, email, role) => {
+    const user = { name, email, role };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
       });
   };
 
