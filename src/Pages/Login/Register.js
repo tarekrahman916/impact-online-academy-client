@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Register = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     formState: { errors },
@@ -21,6 +22,7 @@ const Register = () => {
     const password = data?.password;
     const role = "user";
     setSignUpError("");
+    setIsLoading(true);
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -35,6 +37,7 @@ const Register = () => {
             toast.success("User created successfully");
             e.target.reset();
             navigate("/");
+            setIsLoading(false);
           })
           .catch((err) => {
             console.log(err);
@@ -44,12 +47,13 @@ const Register = () => {
         console.log(err);
         setSignUpError(err.message);
         toast.error(signUpError);
+        setIsLoading(false);
       });
   };
 
   const saveUserDb = (name, email, role) => {
     const user = { name, email, role };
-    fetch("http://localhost:5000/users", {
+    fetch("https://impact-online-academy-server.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

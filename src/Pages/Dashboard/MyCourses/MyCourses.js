@@ -9,7 +9,7 @@ const MyCourses = () => {
     queryKey: ["courses"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/bookings?email=${user?.email}`
+        `https://impact-online-academy-server.vercel.app/bookings?email=${user?.email}`
       );
       const data = await res.json();
       return data;
@@ -23,8 +23,8 @@ const MyCourses = () => {
           <h2 className="text-3xl">No Courses Available</h2>
         </div>
       ) : (
-        <div>
-          <h2>My Courses</h2>
+        <div className="p-4">
+          <h2 className="text-3xl font-bold my-6">My Courses</h2>
           <div>
             <div className="overflow-x-auto">
               <table className="table w-full">

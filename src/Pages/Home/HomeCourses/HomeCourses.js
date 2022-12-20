@@ -5,12 +5,12 @@ const HomeCourses = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/courses")
+    fetch("https://impact-online-academy-server.vercel.app/courses")
       .then((res) => res.json())
       .then((data) => setCourses(data));
   }, []);
   return (
-    <div className="my-10 lg:mx-8  mx-4">
+    <div className="mb-24 lg:mx-32  mx-4 ">
       <div className="mb-8 text-center">
         <h2 className="text-4xl font-semibold mb-2">Our Courses</h2>
         <p className="text-gray-600">
@@ -21,7 +21,7 @@ const HomeCourses = () => {
         data-aos="zoom-in-up"
         data-aos-duration="1000"
         data-aos-easing="ease-in-out"
-        className="grid grid-cols-1 lg:grid-cols-3 gap-14 my-16"
+        className="grid grid-cols-1 lg:grid-cols-4 gap-6 my-16"
       >
         {courses.map((course) => (
           <CourseCard key={course._id} course={course} />

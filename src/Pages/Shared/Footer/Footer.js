@@ -20,7 +20,7 @@ const Footer = () => {
               </span>
             </Link>
           </div>
-          <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
+          <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 lg:grid-cols-3 justify-center">
             <div className="space-y-3">
               <h3 className="tracking-wide uppercase text-gray-50">Product</h3>
               <ul className="space-y-1">
@@ -49,26 +49,6 @@ const Footer = () => {
                 <li>
                   <Link rel="noopener noreferrer" href="#">
                     Terms of Service
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className="space-y-3">
-              <h3 className="uppercase text-gray-50">Developers</h3>
-              <ul className="space-y-1">
-                <li>
-                  <Link rel="noopener noreferrer" href="#">
-                    Public API
-                  </Link>
-                </li>
-                <li>
-                  <Link rel="noopener noreferrer" href="#">
-                    Documentation
-                  </Link>
-                </li>
-                <li>
-                  <Link rel="noopener noreferrer" href="#">
-                    Guides
                   </Link>
                 </li>
               </ul>

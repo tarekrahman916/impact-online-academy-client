@@ -1,0 +1,10 @@
+.header {
+  background-image: linear-gradient(
+    to right top,
+    #8f8fff,
+    #716ee3,
+    #544ec7,
+    #342fac,
+    #000c90
+  );
+}

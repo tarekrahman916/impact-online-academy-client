@@ -16,7 +16,7 @@ const CourseCard = ({ course }) => {
         <div className="flex justify-center">
           <Link
             to={`/courses/${_id}`}
-            className="btn btn-primary absolute bottom-[-10px] hover:text-white"
+            className="btn primaryBtn absolute bottom-[-10px] hover:text-white"
           >
             See Details
             <ArrowLongRightIcon className="h-6 w-6 text-white " />

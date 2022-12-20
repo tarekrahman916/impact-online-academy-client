@@ -12,7 +12,7 @@ function App() {
     AOS.refresh();
   }, []);
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="">
       <RouterProvider router={router}></RouterProvider>
       <Toaster />
     </div>

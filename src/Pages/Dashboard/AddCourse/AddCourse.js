@@ -16,8 +16,8 @@ const AddCourse = () => {
 
   const addFeature = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     setCourseFeature(e.target.value);
+    e.target.reset();
   };
 
   const handleAddFeatures = (e) => {
@@ -63,7 +63,7 @@ const AddCourse = () => {
           instructor: data?.instructor,
         };
 
-        fetch("http://localhost:5000/courses", {
+        fetch("https://impact-online-academy-server.vercel.app/courses", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -157,7 +157,7 @@ const AddCourse = () => {
                   />
                   <button
                     onClick={handleAddFeatures}
-                    className="btn btn-sm btn-secondary ml-5"
+                    className="btn btn-sm primaryBtn ml-5"
                   >
                     +
                   </button>
@@ -220,7 +220,7 @@ const AddCourse = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <button type="submit" className="btn btn-secondary">
+              <button type="submit" className="btn primaryBtn">
                 Add Product
               </button>
             </div>

@@ -1,16 +1,20 @@
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { authContext } from "../../contexts/AuthProvider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const CoursesApply = () => {
   const { user } = useContext(authContext);
   const course = useLoaderData();
+
+  console.log(course);
 
   const handleApply = (e) => {
     e.preventDefault();
     const form = e.target;
     const bookingCourse = {
       courseName: course.name,
+      courseId: course._id,
       name: form.name.value,
       email: form.email.value,
       phone: form.phone.value,
@@ -20,7 +24,7 @@ const CoursesApply = () => {
 
     console.log(bookingCourse);
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://impact-online-academy-server.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -28,7 +32,10 @@ const CoursesApply = () => {
       body: JSON.stringify(bookingCourse),
     })
       .then((res) => res.json())
-      .then((result) => {});
+      .then((result) => {
+        e.target.reset();
+        toast.success("Apply Completed.Please wait we Contact You. ");
+      });
   };
 
   return (
@@ -82,7 +89,7 @@ const CoursesApply = () => {
             ></textarea>
           </div>
 
-          <button type="submit" className="btn btn-primary mt-5 px-12">
+          <button type="submit" className="btn primaryBtn mt-5 px-12">
             Apply
           </button>
         </form>

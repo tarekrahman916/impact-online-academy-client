@@ -1,0 +1,35 @@
+.primaryBtn {
+  transition: 3s ease-out;
+  /* background-image: linear-gradient(
+    to right top,
+    #004fc5,
+    #0068c9,
+    #007abc,
+    #0086a8,
+    #009095
+  ); */
+
+  background-image: linear-gradient(
+    to right top,
+    #04275c,
+    #003f71,
+    #00577e,
+    #006e85,
+    #058488
+  );
+  outline: none;
+  border: none;
+
+  color: white;
+}
+
+.primaryBtn:hover {
+  background-image: linear-gradient(
+    to right top,
+    #021e48,
+    #002d52,
+    #003b57,
+    #004858,
+    #025457
+  );
+}

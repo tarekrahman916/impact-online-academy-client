@@ -1,0 +1,10 @@
+.teacher-card:hover {
+  background-image: linear-gradient(
+    to right top,
+    #004fc5,
+    #0068c9,
+    #007abc,
+    #0086a8,
+    #009095
+  );
+}

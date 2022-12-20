@@ -1,17 +1,22 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import BtnLoader from "../../components/BtnLoader/BtnLoader";
 import { authContext } from "../../contexts/AuthProvider/AuthProvider";
 
+const googleProvider = new GoogleAuthProvider();
+
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const { logIn } = useContext(authContext);
+  const { logIn, googleLogin } = useContext(authContext);
   const [loginErr, setLoginErr] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,19 +26,55 @@ const Login = () => {
     const email = data?.email;
     const password = data?.password;
     setLoginErr("");
+    setIsLoading(true);
     logIn(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
         toast.success("Login Successfully");
+        setIsLoading(false);
         navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err);
         setLoginErr(err.message);
         toast.error(loginErr);
+        setIsLoading(false);
       });
   };
+
+  const handleGoogleLogin = () => {
+    googleLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        const name = user?.displayName;
+        const email = user?.email;
+        const role = "user";
+        saveUserDb(name, email, role);
+
+        toast.success("Login successfully");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message);
+      });
+  };
+
+  const saveUserDb = (name, email, role) => {
+    const user = { name, email, role };
+    fetch("https://impact-online-academy-server.vercel.app/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
   return (
     <div className="my-8">
       <div className="lg:w-1/2 mx-auto max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-900 text-gray-100">
@@ -51,6 +92,7 @@ const Login = () => {
         </p>
         <div className="my-6 space-y-4">
           <button
+            onClick={handleGoogleLogin}
             aria-label="Login with Google"
             type="button"
             className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400"
@@ -126,7 +168,7 @@ const Login = () => {
             type="submit"
             className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900"
           >
-            Sign in
+            {isLoading ? <BtnLoader /> : "Sign in"}
           </button>
         </form>
       </div>
