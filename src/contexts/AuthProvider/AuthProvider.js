@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -24,6 +25,10 @@ const AuthProvider = ({ children }) => {
 
   const updateUser = (userInfo) => {
     return updateProfile(auth.currentUser, userInfo);
+  };
+
+  const verifyEmail = () => {
+    return sendEmailVerification(auth.currentUser);
   };
 
   const logIn = (email, password) => {
@@ -55,6 +60,7 @@ const AuthProvider = ({ children }) => {
     user,
     createUser,
     updateUser,
+    verifyEmail,
     logIn,
     googleLogin,
     logOut,

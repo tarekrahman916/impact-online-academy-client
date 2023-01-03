@@ -8,8 +8,13 @@ const CourseCard = ({ course }) => {
     <div className="box">
       <div className="card h-80  bg-white shadow-xl border-l-8 border-primary ">
         <figure>
-          <img src={thumb} alt="Shoes" className="rounded-lg h-32 w-full " />
+          <img
+            src={thumb}
+            alt="Shoes"
+            className="rounded-lg max-h-24 w-full object-cover"
+          />
         </figure>
+        <hr className="border border-gray-800" />
         <div className="card-body text-center mb-6">
           <h2 className="text-xl font-bold text-gray-700">{name}</h2>
         </div>

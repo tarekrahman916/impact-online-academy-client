@@ -35,7 +35,7 @@ const Teachers = () => {
     },
     {
       _id: 5,
-      name: "Eng. Md. Nurrunnabi",
+      name: "Engr. Md. Nurunnabi",
       image: profile,
       position: "Course Instructor",
     },

@@ -95,7 +95,7 @@ const Login = () => {
             onClick={handleGoogleLogin}
             aria-label="Login with Google"
             type="button"
-            className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400"
+            className=" items-center hidden justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@ const Login = () => {
         </div>
         <div className="flex items-center w-full my-4">
           <hr className="w-full text-gray-400" />
-          <p className="px-3 text-gray-400">OR</p>
+          <p className="px-3 text-gray-400">***</p>
           <hr className="w-full text-gray-400" />
         </div>
         <form

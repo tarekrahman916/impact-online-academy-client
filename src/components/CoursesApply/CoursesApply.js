@@ -40,60 +40,66 @@ const CoursesApply = () => {
 
   return (
     <div>
-      <div className="lg:w-1/2 mx-auto my-8 bg-white shadow-2xl rounded-lg p-4 ">
-        <h2 className="text-3xl font-bold my-6">{course.name}</h2>
-        <form onSubmit={handleApply}>
-          <div className="form-control w-full ">
-            <label className="label">
-              <span className="label-text font-bold">Name</span>
-            </label>
-            <input
-              value={user?.displayName}
-              disabled
-              name="name"
-              placeholder="Type here"
-              className="input input-bordered w-full "
-            />
-          </div>
-          <div className="form-control w-full ">
-            <label className="label">
-              <span className="label-text font-bold">Email</span>
-            </label>
-            <input
-              value={user?.email}
-              disabled
-              name="email"
-              placeholder="Type here"
-              className="input input-bordered w-full "
-            />
-          </div>
-          <div className="form-control w-full ">
-            <label className="label">
-              <span className="label-text font-bold">Phone Number</span>
-            </label>
-            <input
-              required
-              name="phone"
-              placeholder="Phone Number"
-              className="input input-bordered w-full "
-            />
-          </div>
-          <div className="form-control w-full ">
-            <label className="label">
-              <span className="label-text font-bold">Message</span>
-            </label>
-            <textarea
-              name="message"
-              className="textarea textarea-bordered"
-              placeholder="Short message"
-            ></textarea>
-          </div>
+      {user.emailVerified ? (
+        <div className="lg:w-1/2 mx-auto my-8 bg-white shadow-2xl rounded-lg p-4 ">
+          <h2 className="text-3xl font-bold my-6">{course.name}</h2>
+          <form onSubmit={handleApply}>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text font-bold">Name</span>
+              </label>
+              <input
+                value={user?.displayName}
+                disabled
+                name="name"
+                placeholder="Type here"
+                className="input input-bordered w-full "
+              />
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text font-bold">Email</span>
+              </label>
+              <input
+                value={user?.email}
+                disabled
+                name="email"
+                placeholder="Type here"
+                className="input input-bordered w-full "
+              />
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text font-bold">Phone Number</span>
+              </label>
+              <input
+                required
+                name="phone"
+                placeholder="Phone Number"
+                className="input input-bordered w-full "
+              />
+            </div>
+            <div className="form-control w-full ">
+              <label className="label">
+                <span className="label-text font-bold">Message</span>
+              </label>
+              <textarea
+                name="message"
+                className="textarea textarea-bordered"
+                placeholder="Short message"
+              ></textarea>
+            </div>
 
-          <button type="submit" className="btn primaryBtn mt-5 px-12">
-            Apply
-          </button>
-        </form>
-      </div>
+            <button type="submit" className="btn primaryBtn mt-5 px-12">
+              Apply
+            </button>
+          </form>
+        </div>
+      ) : (
+        <h1 className="text-3xl font-bold text-center mt-6 mb-48">
+          Please verify your Email Address
+        </h1>
+      )}
     </div>
   );
 };

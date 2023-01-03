@@ -13,9 +13,7 @@ const HomeCourses = () => {
     <div className="mb-24 lg:mx-32  mx-4 ">
       <div className="mb-8 text-center">
         <h2 className="text-4xl font-semibold mb-2">Our Courses</h2>
-        <p className="text-gray-600">
-          Connection declared vicinity more continue supplied announ
-        </p>
+        <p className="text-gray-600">Our Professional Online Courses</p>
       </div>
       <div
         data-aos="zoom-in-up"

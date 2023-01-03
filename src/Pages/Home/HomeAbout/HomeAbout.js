@@ -1,6 +1,7 @@
 import React from "react";
 import students from "../../../assets/students.png";
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
 const HomeAbout = () => {
   return (
@@ -24,10 +25,12 @@ const HomeAbout = () => {
               Practicing” method. We believe , we are a family. Hopefully, we
               together to become skillful manpower.
             </p>
-            <button className="btn primaryBtn px-5 text-white flex gap-1">
-              Learn More
-              <ArrowLongRightIcon className="h-6 w-6 text-white " />
-            </button>
+            <Link to="/about">
+              <button className="btn primaryBtn px-5 text-white flex gap-1">
+                Learn More
+                <ArrowLongRightIcon className="h-6 w-6 text-white " />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

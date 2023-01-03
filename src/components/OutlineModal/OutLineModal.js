@@ -1,6 +1,6 @@
 import React from "react";
 
-const OutLineModal = ({ video }) => {
+const OutLineModal = ({ outline }) => {
   return (
     <div>
       {/* The button to open modal
@@ -23,7 +23,7 @@ const OutLineModal = ({ video }) => {
             className="rounded-md"
             width="100%"
             height="315"
-            src={video}
+            src={outline}
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

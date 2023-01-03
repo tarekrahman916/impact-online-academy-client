@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import BtnLoader from "../../components/BtnLoader/BtnLoader";
 import { authContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Register = () => {
@@ -12,7 +13,7 @@ const Register = () => {
     handleSubmit,
   } = useForm();
 
-  const { createUser, updateUser } = useContext(authContext);
+  const { createUser, verifyEmail, updateUser } = useContext(authContext);
   const [signUpError, setSignUpError] = useState("");
   const navigate = useNavigate();
 
@@ -23,6 +24,7 @@ const Register = () => {
     const role = "user";
     setSignUpError("");
     setIsLoading(true);
+
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -33,10 +35,13 @@ const Register = () => {
         updateUser(userInfo)
           .then(() => {
             saveUserDb(name, email, role);
+            verifyEmail().then(() => {
+              toast.success("Please check your inbox or spam and verify email");
+            });
 
-            toast.success("User created successfully");
+            // toast.success("User created successfully");
             e.target.reset();
-            navigate("/");
+            // navigate("/");
             setIsLoading(false);
           })
           .catch((err) => {
@@ -161,7 +166,7 @@ const Register = () => {
             type="submit"
             className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900"
           >
-            Sign in
+            {isLoading ? BtnLoader : "Sign Up"}
           </button>
         </form>
       </div>

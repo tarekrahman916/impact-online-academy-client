@@ -14,6 +14,14 @@ const UserRoute = ({ children }) => {
     return <Loader />;
   }
 
+  if (user.emailVerified === false) {
+    return (
+      <h1 className="text-3xl font-bold text-center">
+        Please verify your your Email
+      </h1>
+    );
+  }
+
   if (isUser) {
     return children;
   }

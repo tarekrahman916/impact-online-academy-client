@@ -60,7 +60,12 @@ const AddCourse = () => {
           desc: data?.desc,
           overView: data?.overview,
           video: data?.video,
+          outline: data?.outline,
           instructor: data?.instructor,
+          price: data?.price,
+          duration: data?.duration,
+          totalClass: data?.totalClass,
+          classTime: data?.classTime,
         };
 
         fetch("https://impact-online-academy-server.vercel.app/courses", {
@@ -218,7 +223,75 @@ const AddCourse = () => {
                   className="p-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
                 />
               </div>
+              <div className="col-span-full sm:col-span-6">
+                <label htmlFor="outline" className="text-sm">
+                  Outline Link
+                </label>
+                <input
+                  id="outline"
+                  {...register("outline")}
+                  name="outline"
+                  type="text"
+                  placeholder="Outline Link"
+                  className="p-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
+                />
+              </div>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 col-span-full sm:col-span-6">
+                <div className="w-full">
+                  <label htmlFor="video" className="text-sm">
+                    Course Duration
+                  </label>
+                  <input
+                    id="duration"
+                    {...register("duration", { required: true })}
+                    name="duration"
+                    type="text"
+                    placeholder="Course Duration /h"
+                    className="p-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
+                  />
+                </div>
+                <div className="w-full">
+                  <label htmlFor="totalClass" className="text-sm">
+                    Total Class
+                  </label>
+                  <input
+                    id="overview"
+                    {...register("totalClass", { required: true })}
+                    name="totalClass"
+                    type="text"
+                    placeholder="Total Class"
+                    className="p-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
+                  />
+                </div>
+                <div className="w-full">
+                  <label htmlFor="price" className="text-sm">
+                    Course Fee
+                  </label>
+                  <input
+                    id="price"
+                    {...register("price", { required: true })}
+                    name="price"
+                    type="text"
+                    placeholder="Course Fee"
+                    className="p-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
+                  />
+                </div>
+                <div className="w-full">
+                  <label htmlFor="classTime" className="text-sm">
+                    Class Time
+                  </label>
+                  <input
+                    id="classTime"
+                    {...register("classTime", { required: true })}
+                    name="classTime"
+                    type="text"
+                    placeholder="Class Time"
+                    className="p-2 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 border-gray-700 text-gray-900"
+                  />
+                </div>
+              </div>
             </div>
+
             <div className="flex justify-center">
               <button type="submit" className="btn primaryBtn">
                 Add Product
